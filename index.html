@@ -16,16 +16,187 @@
     </style>
 </head>
 <body>
-    <div class="ad-slot">구글 애드센스 (상단)</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
     
     <div class="card">
         <h1>다이어트 단백질 가성비 판독기</h1>
         <p>단백질 1g당 가격을 산출하여 닭가슴살, 보충제 가성비를 비교합니다.</p>
         
-        <div style="padding: 40px 0; border: 1px solid #e5e7eb; border-radius: 10px; margin: 20px 0; background: #f3f4f6;">
-            <!-- UI 로직 들어갈 자리 -->
-            <p style="color: #6b7280; font-weight: bold;">[계산기 / 변환기 UI 영역]</p>
+        <div id="proteinAnalyzerApp" style="max-width: 450px; margin: 20px auto; padding: 25px; background-color: #f0f4f8; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); font-family: 'Pretendard', 'Noto Sans KR', sans-serif; color: #333; line-height: 1.6;">
+
+    <h1 style="text-align: center; color: #2c3e50; margin-bottom: 25px; font-size: 1.8em; font-weight: 700;">
+        다이어트 단백질 가성비 판독기
+    </h1>
+
+    <div id="inputSection">
+        <div id="chickenBreastSection" style="margin-bottom: 30px; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <h2 style="color: #34495e; font-size: 1.3em; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #e0e6ed; padding-bottom: 8px; text-align: left;">
+                🐔 닭가슴살 정보
+            </h2>
+            <div style="margin-bottom: 15px; display: flex; align-items: center;">
+                <label for="chickenWeight" style="width: 120px; font-weight: 600; font-size: 0.95em; color: #555;">총 무게 (g):</label>
+                <input type="number" id="chickenWeight" value="1000" style="flex-grow: 1; padding: 12px 15px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1em; color: #495057; background-color: #ffffff; box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);">
+            </div>
+            <div style="margin-bottom: 15px; display: flex; align-items: center;">
+                <label for="chickenPrice" style="width: 120px; font-weight: 600; font-size: 0.95em; color: #555;">가격 (원):</label>
+                <input type="number" id="chickenPrice" value="8000" style="flex-grow: 1; padding: 12px 15px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1em; color: #495057; background-color: #ffffff; box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);">
+            </div>
+            <div style="margin-bottom: 0px; display: flex; align-items: center;">
+                <label for="chickenProteinPer100g" style="width: 120px; font-weight: 600; font-size: 0.95em; color: #555;">단백질 (100g당):</label>
+                <input type="number" id="chickenProteinPer100g" value="23" style="flex-grow: 1; padding: 12px 15px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1em; color: #495057; background-color: #ffffff; box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);">
+            </div>
         </div>
+
+        <div id="supplementSection" style="margin-bottom: 30px; padding: 15px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <h2 style="color: #34495e; font-size: 1.3em; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #e0e6ed; padding-bottom: 8px; text-align: left;">
+                🥛 단백질 보충제 정보
+            </h2>
+            <div style="margin-bottom: 15px; display: flex; align-items: center;">
+                <label for="supPrice" style="width: 120px; font-weight: 600; font-size: 0.95em; color: #555;">총 가격 (원):</label>
+                <input type="number" id="supPrice" value="70000" style="flex-grow: 1; padding: 12px 15px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1em; color: #495057; background-color: #ffffff; box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);">
+            </div>
+            <div style="margin-bottom: 15px; display: flex; align-items: center;">
+                <label for="supServings" style="width: 120px; font-weight: 600; font-size: 0.95em; color: #555;">총 서빙 수:</label>
+                <input type="number" id="supServings" value="60" style="flex-grow: 1; padding: 12px 15px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1em; color: #495057; background-color: #ffffff; box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);">
+            </div>
+            <div style="margin-bottom: 0px; display: flex; align-items: center;">
+                <label for="supProteinPerServing" style="width: 120px; font-weight: 600; font-size: 0.95em; color: #555;">단백질 (1서빙당 g):</label>
+                <input type="number" id="supProteinPerServing" value="24" style="flex-grow: 1; padding: 12px 15px; border: 1px solid #ced4da; border-radius: 8px; font-size: 1em; color: #495057; background-color: #ffffff; box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);">
+            </div>
+        </div>
+
+        <button id="calculateBtn" style="width: 100%; padding: 15px; background-color: #2ecc71; color: white; border: none; border-radius: 10px; font-size: 1.1em; font-weight: bold; cursor: pointer; margin-top: 20px; box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3); transition: background-color 0.2s ease-in-out;">
+            가성비 판독!
+        </button>
+    </div>
+
+    <div id="resultSection" style="display:none; margin-top: 35px;">
+        <h2 style="font-family:'Pretendard', 'Noto Sans KR', sans-serif; font-size:1.4em; color:#333; margin-bottom:15px; text-align:center;">판독 결과 📊</h2>
+        <div id="receipt" style="border: 2px dashed #b0c4de; padding: 25px; border-radius: 12px; background-color: #f8fcff; box-shadow: 0 4px 15px rgba(0,0,0,0.08); font-family: 'D2Coding', 'Roboto Mono', monospace, 'Pretendard', sans-serif;">
+            <div style="text-align: center; margin-bottom: 25px; font-size: 1.1em; color: #555;">
+                <span style="display: inline-block; width: 30px; border-bottom: 1px dashed #b0c4de; vertical-align: middle;"></span>
+                <span style="margin: 0 10px; font-weight: bold; color: #333;">단백질 1g당 가격</span>
+                <span style="display: inline-block; width: 30px; border-bottom: 1px dashed #b0c4de; vertical-align: middle;"></span>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
+                    <span style="font-weight: bold; color: #333; font-size: 1.05em;">[ 닭가슴살 ]</span>
+                    <span id="chickenResult" style="color:#2c3e50; font-weight:bold; font-size: 1.1em;"></span>
+                </div>
+                <div style="text-align: right; font-size: 0.85em; color: #888;">(총 단백질 <span id="chickenTotalProteinGrams"></span>g)</div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
+                    <span style="font-weight: bold; color: #333; font-size: 1.05em;">[ 보충제 ]</span>
+                    <span id="supResult" style="color:#2c3e50; font-weight:bold; font-size: 1.1em;"></span>
+                </div>
+                <div style="text-align: right; font-size: 0.85em; color: #888;">(총 단백질 <span id="supTotalProteinGrams"></span>g)</div>
+            </div>
+
+            <div style="border-top: 1px dashed #cfe2f3; margin-top: 25px; padding-top: 20px; text-align: center;">
+                <p style="font-size: 1.3em; font-weight: bold; color: #2ecc71; margin-bottom: 10px;" id="comparisonResult"></p>
+                <p style="font-size: 0.9em; color: #888; margin-bottom: 0;">(1g당 가격 기준)</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px; font-size: 0.9em; color: #aaa;">
+                <span style="display: inline-block; width: 30px; border-bottom: 1px dashed #b0c4de; vertical-align: middle;"></span>
+                <span style="margin: 0 10px;">가성비 판독 완료!</span>
+                <span style="display: inline-block; width: 30px; border-bottom: 1px dashed #b0c4de; vertical-align: middle;"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Input elements
+    const chickenWeightInput = document.getElementById('chickenWeight');
+    const chickenPriceInput = document.getElementById('chickenPrice');
+    const chickenProteinPer100gInput = document.getElementById('chickenProteinPer100g');
+
+    const supPriceInput = document.getElementById('supPrice');
+    const supServingsInput = document.getElementById('supServings');
+    const supProteinPerServingInput = document.getElementById('supProteinPerServing');
+
+    const calculateBtn = document.getElementById('calculateBtn');
+    const resultSection = document.getElementById('resultSection');
+
+    // Output elements
+    const chickenResultSpan = document.getElementById('chickenResult');
+    const chickenTotalProteinGramsSpan = document.getElementById('chickenTotalProteinGrams');
+    const supResultSpan = document.getElementById('supResult');
+    const supTotalProteinGramsSpan = document.getElementById('supTotalProteinGrams');
+    const comparisonResultSpan = document.getElementById('comparisonResult');
+
+    // Function to safely parse float and handle default to 0 if NaN
+    const safeParseFloat = (value) => {
+        const parsed = parseFloat(value);
+        return isNaN(parsed) ? 0 : parsed;
+    };
+
+    calculateBtn.addEventListener('click', () => {
+        // --- Get Chicken Breast values ---
+        const chickenWeight = safeParseFloat(chickenWeightInput.value);
+        const chickenPrice = safeParseFloat(chickenPriceInput.value);
+        const chickenProteinPer100g = safeParseFloat(chickenProteinPer100gInput.value);
+
+        // --- Get Supplement values ---
+        const supPrice = safeParseFloat(supPriceInput.value);
+        const supServings = safeParseFloat(supServingsInput.value);
+        const supProteinPerServing = safeParseFloat(supProteinPerServingInput.value);
+
+        // --- Validation ---
+        if (chickenWeight <= 0 || chickenPrice <= 0 || chickenProteinPer100g <= 0 ||
+            supPrice <= 0 || supServings <= 0 || supProteinPerServing <= 0) {
+            alert('모든 입력 필드에 0보다 큰 유효한 값을 입력해주세요!');
+            resultSection.style.display = 'none'; // Hide results if validation fails
+            return;
+        }
+
+        // --- Calculate Chicken Breast ---
+        const chickenTotalProtein = (chickenWeight / 100) * chickenProteinPer100g;
+        const chickenPricePerGramProtein = chickenPrice / chickenTotalProtein;
+
+        // --- Calculate Protein Supplement ---
+        const supTotalProtein = supServings * supProteinPerServing;
+        const supPricePerGramProtein = supPrice / supTotalProtein;
+
+        // --- Display Results ---
+        chickenTotalProteinGramsSpan.textContent = chickenTotalProtein.toFixed(0).toLocaleString();
+        chickenResultSpan.textContent = `${chickenPricePerGramProtein.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} 원/g`;
+
+        supTotalProteinGramsSpan.textContent = supTotalProtein.toFixed(0).toLocaleString();
+        supResultSpan.textContent = `${supPricePerGramProtein.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })} 원/g`;
+
+        // Reset colors for comparison results
+        chickenResultSpan.style.color = '#2c3e50';
+        supResultSpan.style.color = '#2c3e50';
+        comparisonResultSpan.style.color = '#2ecc71'; // Default success color for the comparison text
+
+        // --- Comparison ---
+        let comparisonText = '';
+        if (chickenPricePerGramProtein < supPricePerGramProtein) {
+            const diff = supPricePerGramProtein - chickenPricePerGramProtein;
+            comparisonText = `닭가슴살이 1g당 ${diff.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}원 더 저렴해요! 👍`;
+            chickenResultSpan.style.color = '#2ecc71'; // Highlight cheaper option
+        } else if (supPricePerGramProtein < chickenPricePerGramProtein) {
+            const diff = chickenPricePerGramProtein - supPricePerGramProtein;
+            comparisonText = `단백질 보충제가 1g당 ${diff.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}원 더 저렴해요! 💪`;
+            supResultSpan.style.color = '#2ecc71'; // Highlight cheaper option
+        } else {
+            comparisonText = `둘의 가성비가 같아요! ⚖️`;
+            comparisonResultSpan.style.color = '#555'; // Neutral color for equality
+        }
+        comparisonResultSpan.textContent = comparisonText;
+
+        resultSection.style.display = 'block'; // Show the results section
+    });
+});
+</script>
 
         <button class="btn-share" onclick="shareApp()">
             앱 공유하기 (Web Share API)
@@ -33,7 +204,9 @@
     </div>
 
     <div class="coupang-banner">쿠팡 파트너스 맞춤형 기획전 배너</div>
-    <div class="ad-slot">구글 애드센스 (하단)</div>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
 
     <!-- JSON-LD 구조화 데이터 -->
     <script type="application/ld+json">
