@@ -12,13 +12,13 @@
     </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4">
-    <div class="glass-card w-full max-w-md p-8 mb-6">
-        <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-2">다이어트 단백질 가성비 판독기</h1>
-        <p class="text-center text-gray-600 mb-8">단백질 1g당 가격을 산출하여 닭가슴살, 보충제 가성비를 비교합니다.</p>
+    <div class="glass-card w-full max-w-3xl pt-8 pb-0 overflow-hidden mb-6">
+        <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-2 px-4">다이어트 단백질 가성비 판독기</h1>
+        <p class="text-center text-gray-600 mb-4 px-4">단백질 1g당 가격을 산출하여 닭가슴살, 보충제 가성비를 비교합니다.</p>
         
         <!-- LOGIC START -->
         <!-- 메인 컨테이너 -->
-<div class="max-w-md mx-auto my-8 bg-slate-900 text-slate-100 rounded-3xl shadow-2xl overflow-hidden border border-slate-800 font-sans">
+<div class="w-full bg-slate-900 text-slate-100 rounded-b-2xl shadow-2xl overflow-hidden border-t border-slate-800 font-sans">
   
   <!-- 헤더 영역 -->
   <div class="px-6 py-8 bg-gradient-to-br from-emerald-500 to-teal-600 text-center relative overflow-hidden">
@@ -31,7 +31,7 @@
   </div>
 
   <!-- 입력 폼 영역 -->
-  <div class="p-6 space-y-6">
+  <div class="p-6 md:p-8 space-y-6 max-w-2xl mx-auto">
     <!-- 제품명 -->
     <div>
       <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">제품명</label>
@@ -39,7 +39,7 @@
     </div>
 
     <!-- 가격 및 수량 2열 배치 -->
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
       <div>
         <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">구매 가격 (원)</label>
         <input type="number" id="prod-price" placeholder="29,900" class="w-full px-4 py-3 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200">
@@ -60,28 +60,28 @@
     </div>
 
     <!-- 판독 버튼 -->
-    <button onclick="calculateCostEffectiveness()" class="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-extrabold rounded-xl shadow-lg shadow-emerald-950/20 active:scale-[0.98] transition-all duration-150 flex items-center justify-center space-x-2 text-base">
+    <button onclick="calculateCostEffectiveness()" class="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-extrabold rounded-xl shadow-lg shadow-emerald-950/20 active:scale-[0.98] transition-all duration-150 flex items-center justify-center space-x-2 text-lg mt-4">
       <span>가성비 판독하기</span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
       </svg>
     </button>
   </div>
 
   <!-- 결과 영수증 영역 (초기 상태 숨김/JS로 컨트롤) -->
-  <div id="receipt-container" class="px-6 pb-8 hidden">
-    <div class="receipt mt-8 bg-[#fcfbf7] text-slate-900 p-6 rounded-lg shadow-xl relative overflow-hidden border border-amber-100/50">
+  <div id="receipt-container" class="px-6 md:px-12 pb-10 hidden">
+    <div class="receipt mt-4 bg-[#fcfbf7] text-slate-900 p-6 md:p-8 rounded-lg shadow-xl relative overflow-hidden border border-amber-100/50 max-w-xl mx-auto">
       <!-- 영수증 장식용 상단 톱니바퀴 라인 -->
       <div class="absolute top-0 left-0 right-0 h-2 bg-repeat-x" style="background-image: radial-gradient(circle, transparent 70%, #fcfbf7 70%); background-size: 12px 12px; background-position: 0 -6px;"></div>
       
       <!-- 영수증 헤더 -->
       <div class="text-center pt-2 pb-4 border-b border-dashed border-slate-300 font-mono">
-        <h2 class="text-lg font-black tracking-widest text-slate-800">PROTEIN RECEIPT</h2>
-        <p class="text-[10px] text-slate-500 mt-1" id="receipt-date">0000.00.00 00:00:00</p>
+        <h2 class="text-lg md:text-xl font-black tracking-widest text-slate-800">PROTEIN RECEIPT</h2>
+        <p class="text-[10px] md:text-xs text-slate-500 mt-1" id="receipt-date">0000.00.00 00:00:00</p>
       </div>
 
       <!-- 상세 리스트 -->
-      <div class="py-4 space-y-2.5 font-mono text-sm border-b border-dashed border-slate-300">
+      <div class="py-4 space-y-3 font-mono text-sm md:text-base border-b border-dashed border-slate-300">
         <div class="flex justify-between items-start">
           <span class="text-slate-500 mr-2 shrink-0">품명 :</span>
           <span class="font-bold text-right text-slate-800 break-all" id="r-name">-</span>
@@ -101,33 +101,33 @@
       </div>
 
       <!-- 영수증 하이라이트 (1g당 단가) -->
-      <div class="py-6 text-center font-mono border-b border-dashed border-slate-300 relative">
-        <p class="text-xs font-bold text-slate-500 tracking-wider">단백질 1g당 가격</p>
-        <div class="mt-2 flex items-baseline justify-center text-slate-900">
-          <span class="text-4xl font-black tracking-tight" id="r-unit-price">0</span>
-          <span class="text-lg font-bold ml-1">원</span>
+      <div class="py-6 md:py-8 text-center font-mono border-b border-dashed border-slate-300 relative">
+        <p class="text-xs md:text-sm font-bold text-slate-500 tracking-wider">단백질 1g당 가격</p>
+        <div class="mt-3 flex items-baseline justify-center text-slate-900">
+          <span class="text-5xl md:text-6xl font-black tracking-tight" id="r-unit-price">0</span>
+          <span class="text-xl md:text-2xl font-bold ml-1 md:ml-2">원</span>
         </div>
         
         <!-- 등급 배지 -->
-        <div class="mt-4 inline-block px-4 py-1.5 rounded-full font-bold text-xs" id="r-grade-badge">
+        <div class="mt-5 inline-block px-5 py-2 rounded-full font-bold text-sm md:text-base shadow-sm" id="r-grade-badge">
           -
         </div>
       </div>
 
       <!-- 영수증 푸터 (평가 메시지) -->
-      <div class="pt-4 text-center">
-        <p class="text-xs text-slate-500 leading-relaxed font-sans font-medium" id="r-verdict">
+      <div class="pt-5 md:pt-6 text-center">
+        <p class="text-sm md:text-base text-slate-600 leading-relaxed font-sans font-medium" id="r-verdict">
           판독 대기 중...
         </p>
       </div>
 
       <!-- 가짜 바코드 생성 -->
-      <div class="mt-6 flex flex-col items-center justify-center space-y-1 opacity-80">
-        <div class="w-full h-8 flex items-stretch">
+      <div class="mt-8 flex flex-col items-center justify-center space-y-2 opacity-80">
+        <div class="w-full h-10 md:h-12 flex items-stretch">
           <!-- JS로 바코드 패턴 제어 -->
           <div class="flex-1 bg-slate-900 mr-[2px]"></div><div class="flex-1 bg-transparent mr-[2px]"></div><div class="w-2 bg-slate-900 mr-[1px]"></div><div class="w-1 bg-slate-900 mr-[2px]"></div><div class="flex-1 bg-transparent mr-[2px]"></div><div class="w-3 bg-slate-900 mr-[2px]"></div><div class="w-1 bg-slate-900 mr-[1px]"></div><div class="flex-1 bg-transparent mr-[2px]"></div><div class="w-2 bg-slate-900"></div><div class="w-1 bg-slate-900 mr-[2px]"></div><div class="flex-1 bg-transparent mr-[2px]"></div><div class="w-3 bg-slate-900 mr-[2px]"></div>
         </div>
-        <span class="text-[9px] font-mono tracking-[0.25em] text-slate-600" id="r-barcode-num">8801068098254</span>
+        <span class="text-[10px] md:text-xs font-mono tracking-[0.3em] text-slate-600" id="r-barcode-num">8801068098254</span>
       </div>
     </div>
   </div>
@@ -161,19 +161,19 @@
 
     if (pricePerGram <= 25) {
       grade = '갓성비 (GOD TIER)';
-      gradeClass = 'bg-emerald-100 text-emerald-800 border border-emerald-300';
+      gradeClass = 'bg-emerald-100 text-emerald-800 border-2 border-emerald-300';
       verdict = '닭들의 신이 내린 기적의 가성비! 무조건 쟁여두고 사수하십시오. 프로 보디빌더도 울고 갈 가격입니다.';
     } else if (pricePerGram <= 40) {
       grade = '혜자 (GREAT VALUE)';
-      gradeClass = 'bg-blue-100 text-blue-800 border border-blue-300';
+      gradeClass = 'bg-blue-100 text-blue-800 border-2 border-blue-300';
       verdict = '매우 훌륭한 가성비 제품입니다. 일상적인 득근을 위한 훌륭한 파트너가 될 자격이 충분합니다.';
     } else if (pricePerGram <= 60) {
       grade = '적정가 (AVERAGE)';
-      gradeClass = 'bg-amber-100 text-amber-800 border border-amber-300';
+      gradeClass = 'bg-amber-100 text-amber-800 border-2 border-amber-300';
       verdict = '요즘 물가 대비 무난하고 평범한 수준입니다. 맛이나 브랜드 충성도가 높다면 계속 구매하셔도 좋습니다.';
     } else {
       grade = '사치품 (LUXURY PROTEIN)';
-      gradeClass = 'bg-rose-100 text-rose-800 border border-rose-300';
+      gradeClass = 'bg-rose-100 text-rose-800 border-2 border-rose-300';
       verdict = '지갑이 얇아지는 고가의 제품입니다. 단백질보다 브랜드 값이나 마케팅 비용이 많이 녹아있을 수 있으니 재고해 보세요!';
     }
 
@@ -191,7 +191,7 @@
     
     // 배지 스타일링 변경
     const gradeBadge = document.getElementById('r-grade-badge');
-    gradeBadge.className = `mt-4 inline-block px-4 py-1.5 rounded-full font-bold text-xs ${gradeClass}`;
+    gradeBadge.className = `mt-5 inline-block px-5 py-2 rounded-full font-bold text-sm md:text-base shadow-sm ${gradeClass}`;
     gradeBadge.innerText = grade;
 
     document.getElementById('r-verdict').innerText = verdict;
@@ -211,16 +211,30 @@
     </div>
     
     <!-- Google AdSense -->
-    <div class="w-full max-w-md bg-white/50 rounded-lg p-2 text-center text-xs text-gray-500 mb-6">
-        <span>광고</span>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
+    <div class="glass-card w-full max-w-3xl p-3 flex flex-col justify-center items-center text-center text-xs text-gray-500 mb-6">
+        <span class="mb-2 uppercase tracking-wider font-semibold opacity-70">Advertisement</span>
+        <div class="w-full min-h-[90px] flex items-center justify-center overflow-hidden">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:inline-block;width:100%;height:90px" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1234567890"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
+        </div>
     </div>
     
     <!-- Web Share API Button -->
-    <button onclick="if(navigator.share) navigator.share({title: '다이어트 단백질 가성비 판독기', url: window.location.href})" class="w-full max-w-md bg-gray-800 text-white font-bold py-4 rounded-full shadow-lg hover:bg-gray-700 transition flex justify-center items-center gap-2">
-        공유하기
+    <button onclick="if(navigator.share) navigator.share({title: '다이어트 단백질 가성비 판독기', url: window.location.href})" class="w-full max-w-3xl bg-gray-800 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-gray-700 transition flex justify-center items-center gap-2 mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+        </svg>
+        <span>결과 공유하기</span>
     </button>
+    
+    <!-- Footer -->
+    <footer class="w-full max-w-3xl text-center text-gray-700 text-sm mt-4 mb-4">
+        <div class="flex justify-center space-x-6 mb-2">
+            <a href="terms.html" class="hover:text-gray-900 font-medium transition-colors underline underline-offset-2">이용약관</a>
+            <a href="privacy.html" class="hover:text-gray-900 font-medium transition-colors underline underline-offset-2">개인정보처리방침</a>
+        </div>
+        <p class="opacity-70 mt-3">&copy; 2026 다이어트 단백질 가성비 판독기. All rights reserved.</p>
+    </footer>
 </body>
 </html>
