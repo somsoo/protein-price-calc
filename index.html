@@ -17,7 +17,195 @@
         <p class="text-center text-gray-600 mb-8">단백질 1g당 가격을 산출하여 닭가슴살, 보충제 가성비를 비교합니다.</p>
         
         <!-- LOGIC START -->
-        <p class='text-red-500 font-bold text-center'>허용된 모든 모델 한도 초과. 잠시 후 다시 시도해주세요.</p>
+        <!-- 메인 컨테이너 -->
+<div class="max-w-md mx-auto my-8 bg-slate-900 text-slate-100 rounded-3xl shadow-2xl overflow-hidden border border-slate-800 font-sans">
+  
+  <!-- 헤더 영역 -->
+  <div class="px-6 py-8 bg-gradient-to-br from-emerald-500 to-teal-600 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent opacity-60"></div>
+    <div class="relative z-10">
+      <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold text-white mb-2 tracking-wider">PROTEIN CALCULATOR</span>
+      <h1 class="text-2xl font-black tracking-tight text-white">득근 가성비 판독기 💪</h1>
+      <p class="text-emerald-100 text-xs mt-1">단백질 1g당 진짜 가격을 낱낱이 파헤쳐 드립니다.</p>
+    </div>
+  </div>
+
+  <!-- 입력 폼 영역 -->
+  <div class="p-6 space-y-6">
+    <!-- 제품명 -->
+    <div>
+      <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">제품명</label>
+      <input type="text" id="prod-name" placeholder="예: 훈제 닭가슴살 10팩, 맛있는 웨이 프로틴" class="w-full px-4 py-3 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200">
+    </div>
+
+    <!-- 가격 및 수량 2열 배치 -->
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">구매 가격 (원)</label>
+        <input type="number" id="prod-price" placeholder="29,900" class="w-full px-4 py-3 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200">
+      </div>
+      <div>
+        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">총 수량 (팩/개입/회)</label>
+        <input type="number" id="prod-quantity" placeholder="10" class="w-full px-4 py-3 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200">
+      </div>
+    </div>
+
+    <!-- 1회 제공량당 단백질 -->
+    <div>
+      <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">1회(팩/스쿱)당 단백질 함량 (g)</label>
+      <div class="relative">
+        <input type="number" id="prod-protein" placeholder="23" class="w-full px-4 py-3 bg-slate-800/80 border border-slate-700/80 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 pr-12">
+        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">g</span>
+      </div>
+    </div>
+
+    <!-- 판독 버튼 -->
+    <button onclick="calculateCostEffectiveness()" class="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-extrabold rounded-xl shadow-lg shadow-emerald-950/20 active:scale-[0.98] transition-all duration-150 flex items-center justify-center space-x-2 text-base">
+      <span>가성비 판독하기</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- 결과 영수증 영역 (초기 상태 숨김/JS로 컨트롤) -->
+  <div id="receipt-container" class="px-6 pb-8 hidden">
+    <div class="receipt mt-8 bg-[#fcfbf7] text-slate-900 p-6 rounded-lg shadow-xl relative overflow-hidden border border-amber-100/50">
+      <!-- 영수증 장식용 상단 톱니바퀴 라인 -->
+      <div class="absolute top-0 left-0 right-0 h-2 bg-repeat-x" style="background-image: radial-gradient(circle, transparent 70%, #fcfbf7 70%); background-size: 12px 12px; background-position: 0 -6px;"></div>
+      
+      <!-- 영수증 헤더 -->
+      <div class="text-center pt-2 pb-4 border-b border-dashed border-slate-300 font-mono">
+        <h2 class="text-lg font-black tracking-widest text-slate-800">PROTEIN RECEIPT</h2>
+        <p class="text-[10px] text-slate-500 mt-1" id="receipt-date">0000.00.00 00:00:00</p>
+      </div>
+
+      <!-- 상세 리스트 -->
+      <div class="py-4 space-y-2.5 font-mono text-sm border-b border-dashed border-slate-300">
+        <div class="flex justify-between items-start">
+          <span class="text-slate-500 mr-2 shrink-0">품명 :</span>
+          <span class="font-bold text-right text-slate-800 break-all" id="r-name">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">지출 가격 :</span>
+          <span class="font-bold text-slate-800" id="r-price">0원</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">총 제공량 :</span>
+          <span class="font-bold text-slate-800" id="r-quantity">0회분</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">총 단백질량 :</span>
+          <span class="font-bold text-slate-800 text-emerald-600" id="r-total-protein">0g</span>
+        </div>
+      </div>
+
+      <!-- 영수증 하이라이트 (1g당 단가) -->
+      <div class="py-6 text-center font-mono border-b border-dashed border-slate-300 relative">
+        <p class="text-xs font-bold text-slate-500 tracking-wider">단백질 1g당 가격</p>
+        <div class="mt-2 flex items-baseline justify-center text-slate-900">
+          <span class="text-4xl font-black tracking-tight" id="r-unit-price">0</span>
+          <span class="text-lg font-bold ml-1">원</span>
+        </div>
+        
+        <!-- 등급 배지 -->
+        <div class="mt-4 inline-block px-4 py-1.5 rounded-full font-bold text-xs" id="r-grade-badge">
+          -
+        </div>
+      </div>
+
+      <!-- 영수증 푸터 (평가 메시지) -->
+      <div class="pt-4 text-center">
+        <p class="text-xs text-slate-500 leading-relaxed font-sans font-medium" id="r-verdict">
+          판독 대기 중...
+        </p>
+      </div>
+
+      <!-- 가짜 바코드 생성 -->
+      <div class="mt-6 flex flex-col items-center justify-center space-y-1 opacity-80">
+        <div class="w-full h-8 flex items-stretch">
+          <!-- JS로 바코드 패턴 제어 -->
+          <div class="flex-1 bg-slate-900 mr-[2px]"></div><div class="flex-1 bg-transparent mr-[2px]"></div><div class="w-2 bg-slate-900 mr-[1px]"></div><div class="w-1 bg-slate-900 mr-[2px]"></div><div class="flex-1 bg-transparent mr-[2px]"></div><div class="w-3 bg-slate-900 mr-[2px]"></div><div class="w-1 bg-slate-900 mr-[1px]"></div><div class="flex-1 bg-transparent mr-[2px]"></div><div class="w-2 bg-slate-900"></div><div class="w-1 bg-slate-900 mr-[2px]"></div><div class="flex-1 bg-transparent mr-[2px]"></div><div class="w-3 bg-slate-900 mr-[2px]"></div>
+        </div>
+        <span class="text-[9px] font-mono tracking-[0.25em] text-slate-600" id="r-barcode-num">8801068098254</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 스크립트 영역 -->
+<script>
+  function calculateCostEffectiveness() {
+    // 인풋 데이터 취득
+    const nameInput = document.getElementById('prod-name').value.trim();
+    const priceInput = parseFloat(document.getElementById('prod-price').value);
+    const quantityInput = parseFloat(document.getElementById('prod-quantity').value);
+    const proteinInput = parseFloat(document.getElementById('prod-protein').value);
+
+    // 벨리데이션 체크
+    if (!priceInput || !quantityInput || !proteinInput || priceInput <= 0 || quantityInput <= 0 || proteinInput <= 0) {
+      alert('모든 입력 필드에 0보다 큰 숫자를 올바르게 입력해주세요.');
+      return;
+    }
+
+    const name = nameInput || '미확인 단백질원';
+
+    // 가성비 계산 프로세스
+    const totalProtein = quantityInput * proteinInput; // 총 단백질량 (g)
+    const pricePerGram = Math.round(priceInput / totalProtein); // 1g당 가격 (원)
+
+    // 가성비 판독 등급 설정 (국내 가성비 닭가슴살 및 보충제 시장 기준)
+    let grade = '';
+    let gradeClass = '';
+    let verdict = '';
+
+    if (pricePerGram <= 25) {
+      grade = '갓성비 (GOD TIER)';
+      gradeClass = 'bg-emerald-100 text-emerald-800 border border-emerald-300';
+      verdict = '닭들의 신이 내린 기적의 가성비! 무조건 쟁여두고 사수하십시오. 프로 보디빌더도 울고 갈 가격입니다.';
+    } else if (pricePerGram <= 40) {
+      grade = '혜자 (GREAT VALUE)';
+      gradeClass = 'bg-blue-100 text-blue-800 border border-blue-300';
+      verdict = '매우 훌륭한 가성비 제품입니다. 일상적인 득근을 위한 훌륭한 파트너가 될 자격이 충분합니다.';
+    } else if (pricePerGram <= 60) {
+      grade = '적정가 (AVERAGE)';
+      gradeClass = 'bg-amber-100 text-amber-800 border border-amber-300';
+      verdict = '요즘 물가 대비 무난하고 평범한 수준입니다. 맛이나 브랜드 충성도가 높다면 계속 구매하셔도 좋습니다.';
+    } else {
+      grade = '사치품 (LUXURY PROTEIN)';
+      gradeClass = 'bg-rose-100 text-rose-800 border border-rose-300';
+      verdict = '지갑이 얇아지는 고가의 제품입니다. 단백질보다 브랜드 값이나 마케팅 비용이 많이 녹아있을 수 있으니 재고해 보세요!';
+    }
+
+    // 날짜 포맷팅 (영수증용)
+    const now = new Date();
+    const formattedDate = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
+    // 영수증 데이터 주입
+    document.getElementById('receipt-date').innerText = formattedDate;
+    document.getElementById('r-name').innerText = name;
+    document.getElementById('r-price').innerText = priceInput.toLocaleString() + '원';
+    document.getElementById('r-quantity').innerText = `${quantityInput.toLocaleString()}회분 (${proteinInput}g/회)`;
+    document.getElementById('r-total-protein').innerText = totalProtein.toLocaleString() + 'g';
+    document.getElementById('r-unit-price').innerText = pricePerGram.toLocaleString();
+    
+    // 배지 스타일링 변경
+    const gradeBadge = document.getElementById('r-grade-badge');
+    gradeBadge.className = `mt-4 inline-block px-4 py-1.5 rounded-full font-bold text-xs ${gradeClass}`;
+    gradeBadge.innerText = grade;
+
+    document.getElementById('r-verdict').innerText = verdict;
+
+    // 가짜 바코드 난수 생성
+    const randomBarcodeNum = Math.floor(1000000000000 + Math.random() * 9000000000000);
+    document.getElementById('r-barcode-num').innerText = randomBarcodeNum;
+
+    // 숨겨진 영수증 영역 노출 및 부드러운 스크롤 효과
+    const receiptContainer = document.getElementById('receipt-container');
+    receiptContainer.classList.remove('hidden');
+    receiptContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+</script>
         <!-- LOGIC END -->
         
     </div>
