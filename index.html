@@ -68,8 +68,8 @@
 </head>
 <body class="flex flex-col items-center justify-center p-4">
 
-    <!-- 상단 슬림 띠배너 (헤더 직하단: 50~90px 반응형) -->
-    <div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; margin: 12px auto 20px; overflow: hidden; text-align: center; min-height: 50px; max-height: 90px;">
+    <!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
+    <div class="manual-ad-box ad-top-banner" style="width: 100%; max-width: 960px; margin: 8px auto 16px; overflow: hidden; text-align: center; min-height: 50px; max-height: 60px;">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
         <ins class="adsbygoogle"
              style="display:inline-block;width:100%;height:60px;"
@@ -79,6 +79,8 @@
              data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+
+    
     <div class="glass-card w-full max-w-3xl pt-8 pb-0 overflow-hidden mb-6">
         <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-2 px-4">다이어트 단백질 가성비 판독기</h1>
         <p class="text-center text-gray-600 mb-4 px-4">단백질 1g당 가격을 산출하여 닭가슴살, 보충제 가성비를 비교합니다.</p>
@@ -140,6 +142,14 @@
     <div class="receipt mt-4 bg-[#fcfbf7] text-slate-900 p-4 sm:p-6 rounded-lg shadow-xl relative overflow-hidden border border-amber-100/50 max-w-xl mx-auto">
       <!-- 영수증 장식용 상단 톱니바퀴 라인 -->
       <div class="absolute top-0 left-0 right-0 h-2 bg-repeat-x" style="background-image: radial-gradient(circle, transparent 70%, #fcfbf7 70%); background-size: 12px 12px; background-position: 0 -6px;"></div>
+
+        <!-- 원클릭 결과 복사 버튼 -->
+        <div class="mt-4 text-center">
+            <button type="button" onclick="window.copyResultToClipboard()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white text-sm font-bold rounded-xl shadow-md transition-all duration-200">
+                <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                <span>결과 전체 복사하기</span>
+            </button>
+        </div>
       
       <!-- 영수증 헤더 -->
       <div class="text-center pt-2 pb-4 border-b border-dashed border-slate-300 font-mono">
@@ -280,11 +290,7 @@
     <!-- Google AdSense -->
     <div class="glass-card w-full max-w-3xl p-3 flex flex-col justify-center items-center text-center text-xs text-gray-500 mb-6">
         <span class="mb-2 uppercase tracking-wider font-semibold opacity-70">Advertisement</span>
-        <div class="manual-ad-box" style="width: 100%; min-height: 100px; margin-top: 20px; margin-bottom: 24px; overflow: hidden; background: #fff; text-align: center; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 10px; box-sizing: border-box;">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
+        
     </div>
     
     <!-- Web Share API Button -->
@@ -296,7 +302,19 @@
     </button>
     
     <!-- Footer -->
-    <footer class="w-full max-w-3xl text-center text-gray-700 text-sm mt-4 mb-4">
+        <!-- 본문 중간 반응형 배너 -->
+    <div class="manual-ad-box ad-mid-banner" style="width: 100%; max-width: 960px; margin: 20px auto; overflow: hidden; text-align: center;">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-2228289204702106"
+             data-ad-slot="1186914926"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+<footer class="w-full max-w-3xl text-center text-gray-700 text-sm mt-4 mb-4">
         <div class="flex justify-center space-x-6 mb-2">
             <a href="terms.html" class="hover:text-gray-900 font-medium transition-colors underline underline-offset-2">이용약관</a>
             <a href="privacy.html" class="hover:text-gray-900 font-medium transition-colors underline underline-offset-2">개인정보처리방침</a>
@@ -304,8 +322,8 @@
         <p class="opacity-70 mt-3">&copy; 2026 다이어트 단백질 가성비 판독기. All rights reserved.</p>
     </footer>
 
-    <!-- 하단 대형 배너 -->
-    <div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto; overflow: hidden; text-align: center;">
+    <!-- 하단 대형 배너 (푸터 직전) -->
+    <div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; overflow: hidden; text-align: center;">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
         <ins class="adsbygoogle"
              style="display:block"
@@ -315,6 +333,8 @@
              data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+
+    
 
 
   <!-- Preemptive UX Helper: Auto comma formatting & Result sharing -->
@@ -370,6 +390,59 @@
         }, 2200);
       }
     });
+  </script>
+
+  <!-- Global UX Helper: Universal Result Copy & Toast -->
+  <script>
+    window.showToastNotification = function(msg) {
+      let toast = document.getElementById('global-ux-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'global-ux-toast';
+        toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:12px 24px;border-radius:9999px;font-size:14px;font-weight:600;box-shadow:0 10px 25px rgba(0,0,0,0.2);z-index:9999;transition:all 0.3s ease;opacity:0;pointer-events:none;';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(10px)';
+      }, 2200);
+    };
+
+    window.copyResultToClipboard = function(customText) {
+      let textToCopy = customText;
+      if (!textToCopy) {
+        const resEl = document.querySelector('#resultBox, .result-card, #result, [id*="result"], [class*="result"], [id*="res"]');
+        textToCopy = resEl ? resEl.innerText.trim() : document.title;
+      }
+      const fullText = textToCopy + "\n\n👉 바로가기: " + window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fullText).then(() => {
+          window.showToastNotification('결과가 클립보드에 복사되었습니다! 🎉');
+        }).catch(() => fallbackCopy(fullText));
+      } else {
+        fallbackCopy(fullText);
+      }
+    };
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try {
+        document.execCommand('copy');
+        window.showToastNotification('결과가 클립보드에 복사되었습니다! 🎉');
+      } catch (e) {
+        window.showToastNotification('복사에 실패했습니다.');
+      }
+      document.body.removeChild(ta);
+    }
   </script>
 
 </body>
