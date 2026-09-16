@@ -35,25 +35,58 @@
 <meta content="https://protein-price-calc.enjoy-onepage.com/og-image.png" name="twitter:image"/>
 <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
 <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "단백질 가성비 판독기 | 닭가슴살·프로틴 1g당 순수 단백질 가격 비교",
-        "alternateName": "단백질가성비",
-        "url": "https://protein-price-calc.enjoy-onepage.com/",
-        "description": "닭가슴살, 유청 단백질 보충제, 계란, 소고기 등 헬스 식품의 100g당 단백질 함량과 총 가격을 분석하여 순수 단백질 1g당 최저가 순위를 즉시 비교합니다.",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "All",
-        "inLanguage": "ko",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "KRW"
-        }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://protein-price-calc.enjoy-onepage.com/#webapp",
+      "name": "득근 가성비 판독기 💪",
+      "url": "https://protein-price-calc.enjoy-onepage.com/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "닭가슴살, 유청 단백질 보충제, 계란, 소고기 등 헬스 식품의 100g당 단백질 함량과 총 가격을 분석하여 순수 단백질 1g당 최저가 순위를 즉시 비교합니다.",
+      "image": "https://protein-price-calc.enjoy-onepage.com/og-image.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
       }
-    ]
-    </script>
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://protein-price-calc.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "1회 섭취 시 최적의 단백질 섭취량은 몇 g인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "성인 남성 근비대 기준 체중 1kg당 1.6~2.0g(60kg 체중 시 100~120g)이 일일 권장량이며, 1회 식사당 약 25~40g을 3~4시간 간격으로 분할 섭취하는 것이 좋습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "자연식(닭가슴살, 계란)보다 보충제가 근성장에 더 좋나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "자연식과 보충제의 생체이용률은 유사합니다. 보충제는 바쁜 일상에서 간편하게 섭취하기 위한 '보조제'이므로 일반 식단과 병행하는 것이 이상적입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "1g당 얼마 이하면 가성비가 훌륭한 수준인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "국내외 시세 기준 1g당 35~45원 이하는 가성비 픽, 45~60원은 표준, 65원 이상은 프리미엄(WPI/유기농) 제품군에 속합니다."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
         body { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Pretendard', sans-serif; }
