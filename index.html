@@ -156,7 +156,7 @@
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 <!-- 상단 슬림 띠배너 (헤더 직하단: 50~60px 슬림형) -->
-<div class="glass-card w-full max-w-3xl pt-8 pb-0 overflow-hidden mb-6">
+<div class="glass-card w-full max-w-6xl pt-8 pb-0 overflow-hidden mb-6">
 <div class="text-3xl font-extrabold text-center text-gray-800 mb-2 px-4">다이어트 단백질 가성비 판독기</div>
 <p class="text-center text-gray-600 mb-4 px-4">단백질 1g당 가격을 산출하여 닭가슴살, 보충제 가성비를 비교합니다.</p>
 <!-- LOGIC START -->
@@ -172,7 +172,8 @@
 </div>
 </div>
 <!-- 입력 폼 영역 -->
-<div class="p-4 sm:p-6 space-y-6 max-w-2xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start p-4 sm:p-6">
+<div class="lg:col-span-6 space-y-6 w-full">
 <!-- 제품명 -->
 <div>
 <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">제품명</label>
@@ -206,6 +207,8 @@
 </button>
 </div>
 <!-- 결과 영수증 영역 (초기 상태 숨김/JS로 컨트롤) -->
+</div>
+<div class="lg:col-span-6 lg:sticky lg:top-8 w-full">
 <div class="px-6 md:px-12 pb-10 hidden" id="receipt-container">
 <div class="receipt mt-4 bg-[#fcfbf7] text-slate-900 p-4 sm:p-6 rounded-lg shadow-xl relative overflow-hidden border border-amber-100/50 max-w-xl mx-auto">
 <!-- 영수증 장식용 상단 톱니바퀴 라인 -->
@@ -497,7 +500,9 @@
 </div>
 </section>
 
-      <!-- 2026 Legal Basis & Disclaimer -->
+      </div>
+</div>
+<!-- 2026 Legal Basis & Disclaimer -->
       <div class="mt-8 mb-4 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg text-xs text-slate-500 text-center border border-slate-200 dark:border-slate-700">
         <p>※ 본 도구는 2026년 최신 공식 기준 및 웹 표준 알고리즘을 기반으로 제작되었으며, 산출 및 변환 결과는 참고용 모의 데이터로서 법적 효력을 갖지 않습니다.</p>
       </div>
