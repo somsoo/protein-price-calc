@@ -350,7 +350,7 @@
     // 배지 스타일링 변경
     const gradeBadge = document.getElementById('r-grade-badge');
     gradeBadge.className = `mt-5 inline-block px-5 py-2 rounded-full font-bold text-sm md:text-base shadow-sm ${gradeClass}`;
-    gradeBadge.innerText = grade;
+    gradeBadge.textContent = grade;
 
     document.getElementById('r-verdict').innerText = verdict;
 
