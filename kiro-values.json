@@ -1,0 +1,16 @@
+{
+ "app": "protein-price-calc",
+ "host": "protein-price-calc.enjoy-onepage.com",
+ "watch": false,
+ "status": "unverified",
+ "checked": "",
+ "soft_days": 60,
+ "hard_days": 120,
+ "grace_days": 31,
+ "hide": [],
+ "pages": [
+  "index.html"
+ ],
+ "values": {},
+ "sources": {}
+}
